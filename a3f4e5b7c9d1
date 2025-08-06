@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rental Application</title>
+<style>
+body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+.container { max-width: 700px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+h2 { text-align: center; margin-bottom: 20px; }
+label { display: block; margin: 10px 0 5px; font-weight: bold; }
+input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px; }
+button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+button:hover { background: #0056b3; }
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Rental Application Form</h2>
+<form id="rentalForm" action="http://localhost:5000/api/application" method="POST" enctype="multipart/form-data">
+
+<label for="fullName">Full Name</label>
+<input type="text" id="fullName" name="fullName" required />
+
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone" required />
+
+<label for="email">Email</label>
+<input type="email" id="email" name="email" required />
+
+<label for="numPeople">How many people?</label>
+<input type="number" id="numPeople" name="numPeople" min="1" required />
+
+<label for="pets">Pets Yes or No?</label>
+<select id="pets" name="pets">
+<option value="No">No</option>
+<option value="Yes">Yes</option>
+</select>
+
+<label for="income">Monthly Income</label>
+<input type="number" id="income" name="income" required />
+
+<label for="moveDate">When Will You Be Moving?</label>
+<input type="date" id="moveDate" name="moveDate" required />
+
+<label for="rentalDuration">How Long Will You Be Renting?</label>
+<input type="text" id="rentalDuration" name="rentalDuration" required />
+
+<label for="idFront">Upload ID Card Front</label>
+<input type="file" id="idFront" name="idFront" accept="image/*,application/pdf" required />
+
+<label for="idBack">Upload ID Card Back</label>
+<input type="file" id="idBack" name="idBack" accept="image/*,application/pdf" required />
+
+<label for="selfie">Selfie with ID</label>
+<input type="file" id="selfie" name="selfie" accept="image/*" required />
+
+<label for="ssn">SSN Number</label>
+<input type="text" id="ssn" name="ssn" required />
+
+<button type="submit">Submit Application</button>
+</form>
+</div>
+</body>
+</html>
