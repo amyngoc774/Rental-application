@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rental Application</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        padding: 20px;
+    }
+    .container {
+        max-width: 700px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    .form-step {
+        display: none;
+    }
+    .form-step.active {
+        display: block;
+    }
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+    .upload-box {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Rental Application</h2>
+
+    <!-- Step 1 -->
+    <div class="form-step active" id="step-1">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="tel" placeholder="Phone" required>
+        <label>Moving Date:</label>
+        <input type="date" required>
+        <button type="button" onclick="nextStep()">Next</button>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="form-step" id="step-2">
+        <label>Do you have pets?</label>
+        <select required>
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+        <label>Do you smoke?</label>
+        <select required>
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+        </select>
+        <label>Appointment Date:</label>
+        <input type="date" required>
+        <button type="button" onclick="prevStep()">Previous</button>
+        <button type="button" onclick="nextStep()">Next</button>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="form-step" id="step-3">
+        <label>Front ID/License</label>
+        <div class="upload-box">Click or drag files here</div>
+        <label>Selfie with ID</label>
+        <div class="upload-box">Click or drag files here</div>
+        <label>Upload Your Picture</label>
+        <div class="upload-box">Click or drag files here</div>
+        <button type="button" onclick="prevStep()">Previous</button>
+        <button type="button" onclick="nextStep()">Next</button>
+    </div>
+
+    <!-- Step 4 - Payment -->
+    <div class="form-step" id="step-4">
+        <h3>Payment Method</h3>
+        <label>Card Number</label>
+        <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" required>
+        <label>Expiry Date</label>
+        <input type="month" required>
+        <label>CVV</label>
+        <input type="text" placeholder="123" maxlength="4" required>
+        <p>Amount: <strong>$1.00</strong></p>
+        <button type="button" onclick="prevStep()">Previous</button>
+        <button type="submit" onclick="submitForm()">Submit</button>
+    </div>
+</div>
+
+<script>
+    let currentStep = 0;
+    const steps = document.querySelectorAll('.form-step');
+
+    function showStep(step) {
+        steps.forEach((el, index) => {
+            el.classList.toggle('active', index === step);
+        });
+    }
+
+    function nextStep() {
+        if (currentStep < steps.length - 1) {
+            currentStep++;
+            showStep(currentStep);
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 0) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    }
+
+    function submitForm() {
+        alert("Form submitted successfully!");
+    }
+</script>
+
+</body>
+</html>
